@@ -27,7 +27,7 @@
 const request = require('request')
 
 const forecast = (latitude, longitude, callback) => {
-  const url = 'http://api.weatherstack.com/current?access_key=b0561ee9fb226ea2d8325f488f7908f1&query=' + latitude +',' + longitude +'&units=s'
+  const url = 'http://api.weatherstack.com/current?access_key=b0561ee9fb226ea2d8325f488f7908f1&query=' + latitude +',' + longitude +'&units=f'
   
     request({ url, json: true }, (error, { body }) => {
         if (error) {
@@ -35,7 +35,7 @@ const forecast = (latitude, longitude, callback) => {
         } else if (body.error) {
             callback(body.error)
         } else {
-            callback(undefined,   'It is currenty '+ body.current.temperature + ' out and ther is ' + body.current.cloudcover + ' % chance of rain !')
+            callback(undefined,   'It is currently '+ body.current.temperature + ' Fahrenhiet out and their is ' + body.current.cloudcover + ' % chance of rain !')
         }
     })
 }
